@@ -89,4 +89,17 @@ CREATE TABLE Bill (
     FOREIGN KEY (patient_id) REFERENCES Patient(id)
 );
 insert into room values (1, "theatre");
-insert into patient values (1, "naser", "naser's hosue", '2003-7-4', "01095007307", 1, 5);
+
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+insert into patient (name,address,birth_date,ph_number,number_of_days,room_id) values ("naser", "naser's hosue", '2003-7-4', "01095007307", 1, 1);
+
+
+(name,address,birth_date,ph_number,number_of_days,room_id)

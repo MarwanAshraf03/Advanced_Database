@@ -54,4 +54,16 @@ nav .active {
   #navbar li a:hover {
 	background-color: #333;
   }
-  
+
+  .icon-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+  }
+  .icons {
+	font-size: 45px;
+  }
+  .icons:hover{
+	cursor: pointer;
+	color: #4CAF50;
+  }
