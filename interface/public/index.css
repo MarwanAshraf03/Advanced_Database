@@ -13,10 +13,6 @@ body {
 	text-align: center;
   }
   
-  main {
-	padding: 20px;
-	align-self: center;
-  }
   footer {
 	background-color: #333;
 	color: white;
@@ -27,48 +23,34 @@ body {
 	width: 100%;
   }
   
-  #patientList {
-	margin-bottom: 20px;
-  }
-  
-  #patientList h2 {
-	font-size: 1.5em;
-	margin-bottom: 10px;
-  }
-  
-  #patients {
+
+#navbar {
+	width: 100%;
 	list-style-type: none;
 	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #4CAF50;
+	overflow: hidden;
   }
   
-  #patients li {
-	border-bottom: 1px solid #ccc;
-	padding: 10px 0;
+  #navbar li {
+	font-size: 25px;
+	margin: 5px;
+	border: 1px solid black;
   }
   
-  #patients li:last-child {
-	border-bottom: none;
-  }
-  
-  #patients li:nth-child(even) {
-	background-color: #f2f2f2;
-  }
-
-  a {
+  #navbar li a {
+	display: block;
 	color: white;
+	text-align: center;
+	padding: 14px 16px;
 	text-decoration: none;
   }
-  a :visited {
-	color: aqua;
+  
+  #navbar li a:hover {
+	background-color: #333;
   }
-  ul {
-	list-style: none;
-	display: flex;
-  }
-  main li {
-	background-color: #4CAF50;
-	text-align: center;
-	margin: 5px;
-	padding: 5px;
-	border-radius: 5px;
-  }
+  
