@@ -26,11 +26,11 @@ app.get('/patients', (req, res) => {
 app.post('/patient-add', (req, res) => {
     // Extract data from the request body
     const { name, address, birth_date, ph_number, number_of_days, room_id } = req.body;
-
+    
     // Construct SQL query to insert data into the database
     const sql = `INSERT INTO Patient (name, address, birth_date, ph_number, number_of_days, room_id) VALUES (?, ?, ?, ?, ?, ?)`;
     const values = [name, address, birth_date, ph_number, number_of_days, room_id];
-
+    
     // Execute the SQL query
     connection.query(sql, values, (error, results) => {
         if (error) {
@@ -46,11 +46,11 @@ app.post('/patient-add', (req, res) => {
 app.post('/patient-edit', (req, res) => {
     // Extract data from the request body
     const { id, name, address, birth_date, ph_number, number_of_days, room_id } = req.body;
-
+    
     // Construct SQL query to insert data into the database
     const sql = `UPDATE patient SET name = ?, address = ?, birth_date = ?, ph_number = ?, number_of_days = ?, room_id = ? WHERE id = ?;`;
     const values = [name, address, birth_date, ph_number, number_of_days, room_id, id];
-
+    
     // Execute the SQL query
     connection.query(sql, values, (error, results) => {
         if (error) {
@@ -66,11 +66,11 @@ app.post('/patient-edit', (req, res) => {
 app.post('/patient-remove', (req, res) => {
     // Extract data from the request body
     const { id } = req.body;
-
+    
     // Construct SQL query to insert data into the database
     const sql = `DELETE FROM patient WHERE id = ?`;
     const values = [id];
-
+    
     // Execute the SQL query
     connection.query(sql, values, (error, results) => {
         if (error) {
@@ -80,6 +80,15 @@ app.post('/patient-remove', (req, res) => {
             console.log('Patient deleted successfully:', results);
             res.status(200).json({ message: 'Patient deleted successfully' });
         }
+    });
+});
+
+app.get('/doctorList', (req, res) => {
+    
+    'SELECT doctor.name AS doctor_name, patient.* FROM doctor JOIN treat ON doctor.id = treat.doctor_id JOIN patient ON treat.patient_id = patient.id;'
+    connection.query('SELECT doctor.*, patient.id as pid, patient.name as pname, treat.treatment_id as tid, treat.disease_id as did, treat.description FROM doctor LEFT JOIN treat ON doctor.id = treat.doctor_id JOIN patient ON treat.patient_id = patient.id;', (error, results) => {
+        if (error) throw error;
+        res.json(results);
     });
 });
 

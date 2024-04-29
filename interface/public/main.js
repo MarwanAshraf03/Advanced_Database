@@ -42,13 +42,55 @@ document.getElementById("list").onclick = function() {
 		fetch('/doctorList')
 		.then(response => response.json())
 		.then(data => {
+			console.log(json(data));
 			// Iterate through the patient data and display it
-			data.forEach(doctor => {
-				const doctorList = document.getElementById('doctorList');
-				const doctorItem = document.createElement('p');
-				doctorItem.textContent = `id: ${doctor.id}, Name: ${doctor.name}, Address: ${doctor.address}, Birth Date: ${doctor.birth_date}, Specialization: ${doctor.specialization}, Rank: ${doctor.rank}`;
-				doctorList.appendChild(doctorItem);
-			});
+			var doctors = {};
+			for (let index = 0; index < data.length; index++) {
+				var doid = data[index];
+				if (!(doid.id in Object.keys(doctors))) {
+					doctors[doid.id] = [
+						{
+						'name': doid.name,
+						'address': doid.address,
+						'birth date': doid.birth_date,
+						'phone number': doid.ph_number,
+						'specialization': doid.specialization,
+						'rank': doid.rank,
+					},
+					{
+						"patient id": doid.pid,
+						"patient name": doid.pname,
+						"disease id": doid.did,
+						"treatment id": doid.tid,
+						"treatment description": doid.description
+					}
+				];					
+				} else {
+					doctors[doid.id].push({
+						"patient id": doid.pid,
+						"patient name": doid.pname,
+						"disease id": doid.did,
+						"treatment id": doid.tid,
+						"treatment description": doid.description
+					});
+				}
+			}
+			const doctorList = document.getElementById('doctorList');
+			const doctorItem = document.createElement('p');
+			doctorItem.textContent = Object.entries(doctors);
+			console.log(doctors);
+			doctorList.appendChild(doctorItem);
+			// data.forEach(doctor => {
+			// 	const doctorList = document.getElementById('doctorList');
+			// 	const doctorItem = document.createElement('p');
+			// 	const patientList = document.createElement('ul');
+			// 	const patientItem = document.createElement('p');
+			// 	console.log(doctor);
+			// 	// doctorItem.textContent = `id: ${doctor.id}, Name: ${doctor.name}, Address: ${doctor.address}, Birth Date: ${doctor.birth_date}, Specialization: ${doctor.specialization}, Rank: ${doctor.rank}`;
+			// 	const temp = Object.entries(doctor);
+			// 	doctorItem.textContent = temp.map(([key, value]) => `{${key}: ${value}}`);
+			// 	doctorList.appendChild(doctorItem);
+			// });
 		})
 		.catch(error => console.error('Error fetching patient data:', error));
 
