@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+    <link rel="stylesheet" href="./all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Management System</title>
@@ -26,7 +27,7 @@
         <i id="remove" class="icons fas fa-user-minus"></i>
     </div>
     <ul id="patientList"></ul>
-    <div class="add-form">
+    <div class="add-form mutation-form">
     <!-- <form method="post" class="add-form" action="/patient-add"> -->
         <input id="name" type="text" placeholder="name">
         <input id="address" type="text" placeholder="address">
@@ -35,6 +36,24 @@
         <input id="number_of_days" type="number" min="0" placeholder="number of days">
         <input id="room_id" type="number" min="1" placeholder="room id">
         <input type="submit" id="input-submit-add">
+    <!-- </form> -->
+    </div>
+    <div class="update-form mutation-form">
+    <!-- <form method="post" class="add-form" action="/patient-add"> -->
+        <input id="id-edit" type="number" min="1" placeholder="id" required>
+        <input id="name-edit" type="text" placeholder="name" required>
+        <input id="address-edit" type="text" placeholder="address" required>
+        <input id="birth_date-edit" type="date" placeholder="birth date" required>
+        <input id="ph_number-edit" type="text" maxlength="15" placeholder="phone number" required>
+        <input id="number_of_days-edit" type="number" min="0" placeholder="number of days" required>
+        <input id="room_id-edit" type="number" min="1" placeholder="room id" required>
+        <input type="submit" id="input-submit-edit">
+    <!-- </form> -->
+    </div>
+    <div class="remove-form mutation-form">
+    <!-- <form method="post" class="add-form" action="/patient-add"> -->
+        <input id="id-remove" type="number" min="1" placeholder="id" required>
+        <input type="submit" id="input-submit-remove">
     <!-- </form> -->
     </div>
     <footer>

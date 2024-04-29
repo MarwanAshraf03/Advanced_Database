@@ -67,14 +67,14 @@ nav .active {
 	cursor: pointer;
 	color: #4CAF50;
   }
-  .add-form {
+  .mutation-form {
 	display: none;
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
   }
 
-  .add-form input{
+  .mutation-form input{
 	border-radius: 40px;
 	text-align: center;
 
