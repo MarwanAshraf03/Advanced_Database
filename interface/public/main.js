@@ -1,6 +1,6 @@
+let pageName = window.location.pathname;
 document.getElementById("list").onclick = function() {
-	console.log(window.location.pathname)
-	if (window.location.pathname === '/index.html')
+	if (pageName === '/index.html')
 	{
 		// Fetch patient data from the server
 		if (window.getComputedStyle(document.getElementById("patientList"), null).display === 'none') {
@@ -26,6 +26,32 @@ document.getElementById("list").onclick = function() {
 			});
 		})
 		.catch(error => console.error('Error fetching patient data:', error));
+	} else if (pageName === '/doctor.html') {
+		// Fetch patient data from the server
+		if (window.getComputedStyle(document.getElementById("doctorList"), null).display === 'none') {
+			document.getElementById("doctorList").style.display = 'block';
+			document.querySelector(".add-form").style.display = "none";
+			document.querySelector(".update-form").style.display = "none";
+			document.querySelector(".remove-form").style.display = "none";
+		}
+		else if (window.getComputedStyle(document.getElementById("doctorList"), null).display === 'block') {
+			document.getElementById("doctorList").style.display = 'none';
+		}
+		// console.log(document.getElementById("patientList").style.display == "block");
+		document.getElementById("doctorList").innerHTML = "";
+		fetch('/doctorList')
+		.then(response => response.json())
+		.then(data => {
+			// Iterate through the patient data and display it
+			data.forEach(doctor => {
+				const doctorList = document.getElementById('doctorList');
+				const doctorItem = document.createElement('p');
+				doctorItem.textContent = `id: ${doctor.id}, Name: ${doctor.name}, Address: ${doctor.address}, Birth Date: ${doctor.birth_date}, Specialization: ${doctor.specialization}, Rank: ${doctor.rank}`;
+				doctorList.appendChild(doctorItem);
+			});
+		})
+		.catch(error => console.error('Error fetching patient data:', error));
+
 	}
 };
 document.getElementById("add").onclick = function () {
